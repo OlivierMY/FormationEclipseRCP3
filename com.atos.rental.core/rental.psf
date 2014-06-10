@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<psf version="2.0">
+<provider id="org.eclipse.egit.core.GitProvider">
+<project reference="1.0,https://github.com/sakukun/FormationEclipseRCP3.git,master,com.atos.rental.core"/>
+<project reference="1.0,https://github.com/sakukun/FormationEclipseRCP3.git,master,com.atos.rental.ui"/>
+</provider>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1402443344683_2" label="Rental" name="Rental">
+<item elementID="=com.atos.rental.ui" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=com.atos.rental.core" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+</psf>
