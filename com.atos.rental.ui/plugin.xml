@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="com.atos.rental.ui.category"
+            class="com.atos.rental.ui.RentalPropertiesView"
+            id="com.atos.rental.ui.rentalPropertiesView"
+            name="Rental"
+            restorable="true">
+      </view>
+      <category
+            id="com.atos.rental.ui.category"
+            name="rental">
+      </category>
+   </extension>
+
+</plugin>
