@@ -13,7 +13,6 @@ import org.eclipse.ui.part.ViewPart;
 import com.atos.rental.core.RentalCoreActivator;
 import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
-import org.eclipse.swt.widgets.DateTime;
 
 public class RentalPropertiesView extends ViewPart {
 
