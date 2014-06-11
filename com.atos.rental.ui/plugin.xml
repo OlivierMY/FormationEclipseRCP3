@@ -5,15 +5,22 @@
          point="org.eclipse.ui.views">
       <view
             category="com.atos.rental.ui.category"
-            class="com.atos.rental.ui.RentalPropertiesView"
-            id="com.atos.rental.ui.rentalPropertiesView"
-            name="Rental"
+            class="com.atos.rental.ui.view.RentalPropertiesView"
+            id="com.atos.rental.ui.rentalProperties"
+            name="RentalProperties"
             restorable="true">
       </view>
       <category
             id="com.atos.rental.ui.category"
             name="rental">
       </category>
+      <view
+            category="com.atos.rental.ui.category"
+            class="com.atos.rental.ui.view.AgencyView"
+            id="com.atos.rental.ui.Agency"
+            name="AgencyView"
+            restorable="true">
+      </view>
    </extension>
 
 </plugin>

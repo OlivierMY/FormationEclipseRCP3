@@ -1,4 +1,4 @@
-package com.atos.rental.ui;
+package com.atos.rental.ui.view;
 
 import java.text.SimpleDateFormat;
 
