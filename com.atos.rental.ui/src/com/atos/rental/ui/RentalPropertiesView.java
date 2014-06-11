@@ -1,5 +1,7 @@
 package com.atos.rental.ui;
 
+import java.text.SimpleDateFormat;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -11,16 +13,18 @@ import org.eclipse.ui.part.ViewPart;
 import com.atos.rental.core.RentalCoreActivator;
 import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
+import org.eclipse.swt.widgets.DateTime;
 
 public class RentalPropertiesView extends ViewPart {
 
 	private Label rentedObjectLabel;
 	private Label customerLabel;
-	private Label customerTitleLabel;
-	private Label startDateLabel;
-	private Label stopDateLabel;
-	private Label startDateTitleLabel;
-	private Label stopDateTitleLabel;
+	private Label loueALabel;
+	private Group grpDatesDeLocation;
+	private Label duLabel;
+	private Label auLabel;
+	private Label dateStartLabel;
+	private Label dateEndLabel;
 
 	public RentalPropertiesView() {
 		// TODO Auto-generated constructor stub
@@ -31,17 +35,39 @@ public class RentalPropertiesView extends ViewPart {
 		parent.setLayout(new GridLayout(1, false));
 		
 		Group infGroup = new Group(parent, SWT.NONE);
-		infGroup.setText("Information");
+		infGroup.setText("Informations");
 		infGroup.setLayout(new GridLayout(2, false));
 		
-		rentedObjectLabel = new Label(infGroup, SWT.BORDER);
+		rentedObjectLabel = new Label(infGroup, SWT.NONE);
 		GridData gd = new GridData();
 		gd.horizontalSpan = 2;
 		gd.horizontalAlignment = SWT.FILL;
 		rentedObjectLabel.setLayoutData(gd);
 		
-		customerLabel = new Label(infGroup, SWT.BORDER);
-		customerLabel.setLayoutData(gd);
+		loueALabel = new Label(infGroup, SWT.NONE);
+		loueALabel.setText("Lou\u00E9 \u00E0 :");
+		
+		customerLabel = new Label(infGroup, SWT.NONE);
+		
+		grpDatesDeLocation = new Group(parent, SWT.NONE);
+		grpDatesDeLocation.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
+		grpDatesDeLocation.setText("Dates de location");
+		GridLayout gl_grpDatesDeLocation = new GridLayout(2, false);
+		gl_grpDatesDeLocation.horizontalSpacing = 2;
+		grpDatesDeLocation.setLayout(gl_grpDatesDeLocation);
+		
+		duLabel = new Label(grpDatesDeLocation, SWT.NONE);
+		duLabel.setText("du :");
+		
+		dateStartLabel = new Label(grpDatesDeLocation, SWT.NONE);
+		dateStartLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
+		dateStartLabel.setText("dateStart");
+		
+		auLabel = new Label(grpDatesDeLocation, SWT.NONE);
+		auLabel.setText("au :");
+		
+		dateEndLabel = new Label(grpDatesDeLocation, SWT.NONE);
+		dateEndLabel.setText("dateEnd");
 		
 		RentalAgency agency = RentalCoreActivator.getAgency();
 		Rental r = agency.getRentals().get(0);
@@ -53,8 +79,9 @@ public class RentalPropertiesView extends ViewPart {
 	{
 		rentedObjectLabel.setText(r.getRentedObject().getName());
 		customerLabel.setText(r.getCustomer().getDisplayName());
-		//startDateLabel.setText(r.getStartDate().toString());
-		//stopDateLabel.setText(r.getEndDate().toString());
+		SimpleDateFormat sdp = new SimpleDateFormat("dd/MM/yyyy");
+		dateStartLabel.setText(sdp.format(r.getStartDate()));
+		dateEndLabel.setText(sdp.format(r.getEndDate()));
 	}
 
 	@Override
