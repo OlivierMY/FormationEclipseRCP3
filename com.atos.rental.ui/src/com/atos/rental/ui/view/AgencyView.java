@@ -20,12 +20,12 @@ public class AgencyView extends ViewPart {
 	@Override
 	public void createPartControl(Composite parent) {
 		TreeViewer tv = new TreeViewer(parent);
-		
+
 		tv.setContentProvider(new RentalProvider());
 		tv.setLabelProvider(new RentalProvider());
 		Collection<RentalAgency> agencies = new ArrayList<RentalAgency>();
 		agencies.add(RentalCoreActivator.getAgency());
-		
+
 		tv.setInput(agencies);
 		getSite().setSelectionProvider(tv);
 	}
@@ -35,6 +35,5 @@ public class AgencyView extends ViewPart {
 		// TODO Auto-generated method stub
 
 	}
-
 
 }

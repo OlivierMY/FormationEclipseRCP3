@@ -10,17 +10,23 @@ import org.osgi.framework.FrameworkUtil;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class RentalUIActivator extends AbstractUIPlugin implements IRentalUIConstants {
+public class RentalUIActivator extends AbstractUIPlugin implements
+		IRentalUIConstants {
 
 	@Override
 	protected void initializeImageRegistry(ImageRegistry reg) {
 		Bundle b = FrameworkUtil.getBundle(getClass());
-		
-		reg.put(IMG_CUSTOMER_KEY, ImageDescriptor.createFromURL(b.getEntry("icons/Customers.png")));
-		reg.put(IMG_RENTAL_KEY, ImageDescriptor.createFromURL(b.getEntry("icons/Rentals.png")));
-		reg.put(IMG_RENTAL_OBJECT_KEY, ImageDescriptor.createFromURL(b.getEntry("icons/RentalObjects.png")));
-		reg.put(IMG_AGENCY_KEY, ImageDescriptor.createFromURL(b.getEntry("icons/Agency.png")));
-		reg.put(IMG_SAMPLE_KEY, ImageDescriptor.createFromURL(b.getEntry("icons/sample.gif")));
+
+		reg.put(IMG_CUSTOMER_KEY, ImageDescriptor.createFromURL(b
+				.getEntry("icons/Customers.png")));
+		reg.put(IMG_RENTAL_KEY,
+				ImageDescriptor.createFromURL(b.getEntry("icons/Rentals.png")));
+		reg.put(IMG_RENTAL_OBJECT_KEY, ImageDescriptor.createFromURL(b
+				.getEntry("icons/RentalObjects.png")));
+		reg.put(IMG_AGENCY_KEY,
+				ImageDescriptor.createFromURL(b.getEntry("icons/Agency.png")));
+		reg.put(IMG_SAMPLE_KEY,
+				ImageDescriptor.createFromURL(b.getEntry("icons/sample.gif")));
 	}
 
 	// The plug-in ID
@@ -28,7 +34,7 @@ public class RentalUIActivator extends AbstractUIPlugin implements IRentalUICons
 
 	// The shared instance
 	private static RentalUIActivator plugin;
-	
+
 	/**
 	 * The constructor
 	 */
@@ -37,7 +43,10 @@ public class RentalUIActivator extends AbstractUIPlugin implements IRentalUICons
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+	 * 
+	 * @see
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
+	 * )
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
@@ -46,7 +55,10 @@ public class RentalUIActivator extends AbstractUIPlugin implements IRentalUICons
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+	 * 
+	 * @see
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
+	 * )
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;

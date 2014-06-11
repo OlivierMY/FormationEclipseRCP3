@@ -159,16 +159,21 @@ public class RentalProvider extends LabelProvider implements
 	public Image getImage(Object element) {
 		Image result = null;
 		if (element instanceof Customer) {
-			result = RentalUIActivator.getDefault().getImageRegistry().get(IMG_CUSTOMER_KEY);
+			result = RentalUIActivator.getDefault().getImageRegistry()
+					.get(IMG_CUSTOMER_KEY);
 		} else if (element instanceof RentalObject) {
-			result = RentalUIActivator.getDefault().getImageRegistry().get(IMG_RENTAL_OBJECT_KEY);
+			result = RentalUIActivator.getDefault().getImageRegistry()
+					.get(IMG_RENTAL_OBJECT_KEY);
 		} else if (element instanceof Rental) {
-			result = RentalUIActivator.getDefault().getImageRegistry().get(IMG_RENTAL_KEY);
+			result = RentalUIActivator.getDefault().getImageRegistry()
+					.get(IMG_RENTAL_KEY);
 		} else if (element instanceof RentalAgency) {
-			result = RentalUIActivator.getDefault().getImageRegistry().get(IMG_AGENCY_KEY);
+			result = RentalUIActivator.getDefault().getImageRegistry()
+					.get(IMG_AGENCY_KEY);
 		} else if (element instanceof Node) {
-			result = RentalUIActivator.getDefault().getImageRegistry().get(IMG_SAMPLE_KEY);
-		} 
+			result = RentalUIActivator.getDefault().getImageRegistry()
+					.get(IMG_SAMPLE_KEY);
+		}
 		return result;
 	}
 
