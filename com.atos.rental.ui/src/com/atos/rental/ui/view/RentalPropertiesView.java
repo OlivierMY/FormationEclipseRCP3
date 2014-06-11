@@ -5,6 +5,12 @@ import java.text.SimpleDateFormat;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.DragSource;
+import org.eclipse.swt.dnd.DragSourceAdapter;
+import org.eclipse.swt.dnd.DragSourceEvent;
+import org.eclipse.swt.dnd.TextTransfer;
+import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -81,6 +87,7 @@ public class RentalPropertiesView extends ViewPart implements
 		Rental r = agency.getRentals().get(0);
 
 		setRental(r);
+		setLabelAsDragSource(rentedObjectLabel);
 	}
 
 	private void setRental(Rental r) {
@@ -118,6 +125,22 @@ public class RentalPropertiesView extends ViewPart implements
 				setRental((Rental) selected);
 			}
 		}
+	}
+	
+	
+	public void setLabelAsDragSource(final Label label) {
+		DragSource source = new DragSource(label, DND.DROP_MOVE | DND.DROP_COPY);
+		
+		source.setTransfer(new Transfer[] {TextTransfer.getInstance()});
+		
+		source.addDragListener(new DragSourceAdapter() {
+			@Override
+			public void dragSetData(DragSourceEvent event) {
+				if (TextTransfer.getInstance().isSupportedType(event.dataType)) {
+					event.data = label.getText();
+				}
+			}
+		});
 	}
 
 }

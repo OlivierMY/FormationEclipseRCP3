@@ -3,17 +3,20 @@ package com.atos.rental.ui.provider;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 
+import org.eclipse.jface.resource.ColorRegistry;
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.jface.resource.StringConverter;
 import org.eclipse.jface.viewers.IColorProvider;
+import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
 
 import com.atos.rental.ui.IRentalUIConstants;
 import com.atos.rental.ui.RentalUIActivator;
+import com.atos.rental.ui.perf.PreferenceInitializer;
 import com.opcoach.training.rental.Customer;
 import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
@@ -140,11 +143,11 @@ public class RentalProvider extends LabelProvider implements
 	public Color getForeground(Object element) {
 		Color result = null;
 		if (element instanceof Customer) {
-			result = Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
+			result = getAColor(RentalUIActivator.getDefault().getPreferenceStore().getString(PreferenceInitializer.PREF_CUSTOMER));
 		} else if (element instanceof RentalObject) {
-			result = Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
+			result = getAColor(RentalUIActivator.getDefault().getPreferenceStore().getString(PreferenceInitializer.PREF_OBJECTS));
 		} else if (element instanceof Rental) {
-			result = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
+			result = getAColor(RentalUIActivator.getDefault().getPreferenceStore().getString(PreferenceInitializer.PREF_RENTAL));
 		}
 		return result;
 	}
@@ -175,6 +178,17 @@ public class RentalProvider extends LabelProvider implements
 					.get(IMG_SAMPLE_KEY);
 		}
 		return result;
+	}
+	
+	private Color getAColor(String rgbKey) {
+		ColorRegistry colorRegistry = JFaceResources.getColorRegistry();
+		
+		Color col = colorRegistry.get(rgbKey);
+		if (col == null) {
+			colorRegistry.put(rgbKey, StringConverter.asRGB(rgbKey));
+			col = colorRegistry.get(rgbKey);
+		}
+		return col;
 	}
 
 }

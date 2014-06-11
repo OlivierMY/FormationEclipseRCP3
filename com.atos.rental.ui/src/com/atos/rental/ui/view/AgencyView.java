@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.IPropertyListener;
 import org.eclipse.ui.part.ViewPart;
 
 import com.atos.rental.core.RentalCoreActivator;
