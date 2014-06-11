@@ -2,19 +2,25 @@ package com.atos.rental.ui.view;
 
 import java.text.SimpleDateFormat;
 
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IViewSite;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
 
 import com.atos.rental.core.RentalCoreActivator;
 import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
 
-public class RentalPropertiesView extends ViewPart {
+public class RentalPropertiesView extends ViewPart implements ISelectionListener {
 
 	private Label rentedObjectLabel;
 	private Label customerLabel;
@@ -87,6 +93,28 @@ public class RentalPropertiesView extends ViewPart {
 	public void setFocus() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	@Override
+	public void init(IViewSite site) throws PartInitException {
+		super.init(site);
+		site.getPage().addSelectionListener(this);
+	}
+	
+	@Override
+	public void dispose() {
+		getSite().getPage().removeSelectionListener(this);
+		super.dispose();
+	}
+
+	@Override
+	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+		if (selection instanceof IStructuredSelection) {
+			Object selected = ((IStructuredSelection) selection).getFirstElement();
+			if (selected instanceof Rental) {
+				setRental((Rental) selected);
+			}
+		}
 	}
 
 }

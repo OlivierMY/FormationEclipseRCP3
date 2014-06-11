@@ -27,7 +27,7 @@ public class AgencyView extends ViewPart {
 		agencies.add(RentalCoreActivator.getAgency());
 		
 		tv.setInput(agencies);
-
+		getSite().setSelectionProvider(tv);
 	}
 
 	@Override
@@ -35,5 +35,6 @@ public class AgencyView extends ViewPart {
 		// TODO Auto-generated method stub
 
 	}
+
 
 }
