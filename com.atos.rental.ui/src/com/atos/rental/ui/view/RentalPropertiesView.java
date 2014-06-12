@@ -23,6 +23,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
 
 import com.atos.rental.core.RentalCoreActivator;
+import com.atos.rental.ui.Messages;
 import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
 
@@ -47,7 +48,7 @@ public class RentalPropertiesView extends ViewPart implements
 		parent.setLayout(new GridLayout(1, false));
 
 		Group infGroup = new Group(parent, SWT.NONE);
-		infGroup.setText("Informations");
+		infGroup.setText(Messages.RentalPropertiesView_0);
 		infGroup.setLayout(new GridLayout(2, false));
 
 		rentedObjectLabel = new Label(infGroup, SWT.NONE);
@@ -57,31 +58,31 @@ public class RentalPropertiesView extends ViewPart implements
 		rentedObjectLabel.setLayoutData(gd);
 
 		loueALabel = new Label(infGroup, SWT.NONE);
-		loueALabel.setText("Lou\u00E9 \u00E0 :");
+		loueALabel.setText(Messages.RentalPropertiesView_1);
 
 		customerLabel = new Label(infGroup, SWT.NONE);
 
 		grpDatesDeLocation = new Group(parent, SWT.NONE);
 		grpDatesDeLocation.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER,
 				true, false, 1, 1));
-		grpDatesDeLocation.setText("Dates de location");
+		grpDatesDeLocation.setText(Messages.RentalPropertiesView_2);
 		GridLayout gl_grpDatesDeLocation = new GridLayout(2, false);
 		gl_grpDatesDeLocation.horizontalSpacing = 2;
 		grpDatesDeLocation.setLayout(gl_grpDatesDeLocation);
 
 		duLabel = new Label(grpDatesDeLocation, SWT.NONE);
-		duLabel.setText("du :");
+		duLabel.setText(Messages.RentalPropertiesView_3);
 
 		dateStartLabel = new Label(grpDatesDeLocation, SWT.NONE);
 		dateStartLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true,
 				false, 1, 1));
-		dateStartLabel.setText("dateStart");
+		dateStartLabel.setText(Messages.RentalPropertiesView_4);
 
 		auLabel = new Label(grpDatesDeLocation, SWT.NONE);
-		auLabel.setText("au :");
+		auLabel.setText(Messages.RentalPropertiesView_5);
 
 		dateEndLabel = new Label(grpDatesDeLocation, SWT.NONE);
-		dateEndLabel.setText("dateEnd");
+		dateEndLabel.setText(Messages.RentalPropertiesView_6);
 
 		RentalAgency agency = RentalCoreActivator.getAgency();
 		Rental r = agency.getRentals().get(0);
@@ -93,7 +94,7 @@ public class RentalPropertiesView extends ViewPart implements
 	private void setRental(Rental r) {
 		rentedObjectLabel.setText(r.getRentedObject().getName());
 		customerLabel.setText(r.getCustomer().getDisplayName());
-		SimpleDateFormat sdp = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdp = new SimpleDateFormat(Messages.RentalPropertiesView_7);
 		dateStartLabel.setText(sdp.format(r.getStartDate()));
 		dateEndLabel.setText(sdp.format(r.getEndDate()));
 	}

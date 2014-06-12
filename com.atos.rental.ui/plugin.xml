@@ -7,14 +7,14 @@
             class="com.atos.rental.ui.view.RentalPropertiesView"
             icon="icons/Rentals.png"
             id="com.atos.rental.ui.rentalProperties"
-            name="RentalProperties"
+            name="%view.name"
             restorable="true">
       </view>
       <view
             class="com.atos.rental.ui.view.AgencyView"
             icon="icons/Agency.png"
             id="com.atos.rental.ui.Agency"
-            name="AgencyView"
+            name="%view.name.0"
             restorable="true">
       </view>
    </extension>
@@ -24,7 +24,7 @@
             class="com.atos.rental.ui.perspective.RentalPerspective"
             icon="icons/Rentals.png"
             id="com.atos.rental.ui.perspective.RentalPerspective"
-            name="RentalPerspective">
+            name="%perspective.name">
       </perspective>
    </extension>
    <extension
@@ -32,7 +32,7 @@
       <page
             class="com.atos.rental.ui.pref.Colors"
             id="com.atos.rental.ui.pref.colors"
-            name="Colors">
+            name="%page.name">
       </page>
    </extension>
    <extension
@@ -45,7 +45,7 @@
          point="org.eclipse.ui.commands">
       <command
             id="com.atos.rental.ui.commandhelloworld"
-            name="HelloWorld">
+            name="%command.name">
       </command>
    </extension>
    <extension
@@ -63,7 +63,7 @@
          <command
                commandId="com.atos.rental.ui.commandhelloworld"
                icon="icons/sample.gif"
-               label="HelloWorld"
+               label="%command.label"
                style="push">
          </command>
       </menuContribution>
@@ -82,11 +82,11 @@
          <menu
                commandId="com.atos.rental.ui.commandhelloworld"
                icon="icons/Agency.png"
-               label="HelloSousMenu">
+               label="%menu.label">
             <command
                   commandId="com.atos.rental.ui.commandhelloworld"
                   icon="icons/sample.gif"
-                  label="HelloWorld"
+                  label="%command.label.0"
                   style="push">
             </command>
          </menu>
