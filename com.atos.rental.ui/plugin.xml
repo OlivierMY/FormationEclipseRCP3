@@ -17,6 +17,13 @@
             name="%view.name.0"
             restorable="true">
       </view>
+      <view
+            class="com.atos.rental.ui.view.CustomerView"
+            icon="icons/Customers.png"
+            id="com.atos.rental.ui.CustomerView"
+            name="CustomerView"
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.ui.perspectives">
