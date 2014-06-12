@@ -22,11 +22,16 @@ public class copyCustomerHandler extends AbstractHandler {
 		ISelection currentSelection = HandlerUtil.getCurrentSelection(event);
 		if (currentSelection instanceof IStructuredSelection) {
 			IStructuredSelection isel = (IStructuredSelection) currentSelection;
-			Customer cus = (Customer) isel.getFirstElement();
 
 			Clipboard clipboard = new Clipboard(Display.getCurrent());
-			String textData = cus.getDisplayName();
-			String rtfData = "{\\rtf1\\b\\i " + cus.getDisplayName() + "}";
+			String textData = "";
+			String rtfData = "{\\rtf1\\b\\i ";
+			for (Object obj : isel.toArray()) {
+				Customer cus = (Customer) obj;
+				textData = textData + "\n" + cus.getDisplayName();
+				rtfData = rtfData + "\n" + cus.getDisplayName();
+			}
+			rtfData = rtfData + "}";
 			TextTransfer textTransfer = TextTransfer.getInstance();
 			RTFTransfer rtfTransfer = RTFTransfer.getInstance();
 			Transfer[] transfers = new Transfer[] { textTransfer, rtfTransfer };

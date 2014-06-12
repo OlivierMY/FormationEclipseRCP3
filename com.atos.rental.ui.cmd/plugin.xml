@@ -8,12 +8,12 @@
             commandId="org.eclipse.ui.edit.copy">
          <activeWhen>
             <reference
-                  definitionId="com.atos.rental.ui.cmd.singleCustomerSelected">
+                  definitionId="com.atos.rental.ui.cmd.CustomerSelected">
             </reference>
          </activeWhen>
          <enabledWhen>
             <reference
-                  definitionId="com.atos.rental.ui.cmd.singleCustomerSelected">
+                  definitionId="com.atos.rental.ui.cmd.CustomerSelected">
             </reference>
          </enabledWhen>
       </handler>
@@ -30,7 +30,7 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="com.atos.rental.ui.cmd.singleCustomerSelected">
+                     definitionId="com.atos.rental.ui.cmd.CustomerSelected">
                </reference>
             </visibleWhen>
          </command>
@@ -39,17 +39,12 @@
    <extension
          point="org.eclipse.core.expressions.definitions">
       <definition
-            id="com.atos.rental.ui.cmd.singleCustomerSelected">
-         <and>
-            <count
-                  value="1">
-            </count>
-            <iterate>
-               <instanceof
-                     value="com.opcoach.training.rental.Customer">
-               </instanceof>
-            </iterate>
-         </and>
+            id="com.atos.rental.ui.cmd.CustomerSelected">
+         <iterate>
+            <instanceof
+                  value="com.opcoach.training.rental.Customer">
+            </instanceof>
+         </iterate>
       </definition>
    </extension>
 

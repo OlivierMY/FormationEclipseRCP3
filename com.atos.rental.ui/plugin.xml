@@ -4,19 +4,13 @@
    <extension
          point="org.eclipse.ui.views">
       <view
-            category="com.atos.rental.ui.category"
             class="com.atos.rental.ui.view.RentalPropertiesView"
             icon="icons/Rentals.png"
             id="com.atos.rental.ui.rentalProperties"
             name="RentalProperties"
             restorable="true">
       </view>
-      <category
-            id="com.atos.rental.ui.category"
-            name="rental">
-      </category>
       <view
-            category="com.atos.rental.ui.category"
             class="com.atos.rental.ui.view.AgencyView"
             icon="icons/Agency.png"
             id="com.atos.rental.ui.Agency"
@@ -48,19 +42,9 @@
       </initializer>
    </extension>
    <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            class="com.atos.rental.ui.handler.HelloWorldHandler"
-            commandId="com.atos.rental.ui.helloworldhandler">
-      </handler>
-   </extension>
-   <extension
          point="org.eclipse.ui.commands">
       <command
-            category=" "
-            commandId="com.atos.rental.ui.command.helloworld"
             id="com.atos.rental.ui.commandhelloworld"
-            label="HelloWorld"
             name="HelloWorld">
       </command>
    </extension>
