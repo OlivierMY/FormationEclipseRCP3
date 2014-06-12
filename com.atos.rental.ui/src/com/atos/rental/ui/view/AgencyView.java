@@ -7,7 +7,8 @@ import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.IPropertyListener;
+import org.eclipse.ui.IViewSite;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
 
 import com.atos.rental.core.RentalCoreActivator;
@@ -15,7 +16,9 @@ import com.atos.rental.ui.RentalUIActivator;
 import com.atos.rental.ui.provider.RentalProvider;
 import com.opcoach.training.rental.RentalAgency;
 
-public class AgencyView extends ViewPart {
+public class AgencyView extends ViewPart implements IPropertyChangeListener {
+
+	private TreeViewer tv;
 
 	public AgencyView() {
 		// TODO Auto-generated constructor stub
@@ -23,7 +26,7 @@ public class AgencyView extends ViewPart {
 
 	@Override
 	public void createPartControl(Composite parent) {
-		final TreeViewer tv = new TreeViewer(parent);
+		tv = new TreeViewer(parent);
 
 		tv.setContentProvider(new RentalProvider());
 		tv.setLabelProvider(new RentalProvider());
@@ -32,22 +35,29 @@ public class AgencyView extends ViewPart {
 
 		tv.setInput(agencies);
 		getSite().setSelectionProvider(tv);
-		
-		RentalUIActivator.getDefault().getPreferenceStore()
-		  .addPropertyChangeListener(new IPropertyChangeListener() {
-		    
-		    @Override
-		    public void propertyChange(PropertyChangeEvent event) {
-		    	tv.refresh();
-		    	
-		    }
-		  }); 
 	}
 
 	@Override
 	public void setFocus() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	@Override
+	public void init(IViewSite site) throws PartInitException {
+		super.init(site);
+		RentalUIActivator.getDefault().getPreferenceStore()
+		  .addPropertyChangeListener(this); 
+	}
+	@Override
+	public void dispose() {
+		getSite().getPage().removePropertyChangeListener(this);
+		super.dispose();
+	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent event) {
+		tv.refresh();
 	}
 
 }
