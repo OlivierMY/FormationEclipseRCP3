@@ -8,6 +8,8 @@ Bundle-Vendor: ATOS
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.views;bundle-version="3.6.100",
- com.atos.rental.core;bundle-version="1.0.0"
+ com.atos.rental.core;bundle-version="1.0.0";visibility:=reexport,
+ org.eclipse.core.commands,
+ org.eclipse.ui.workbench
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

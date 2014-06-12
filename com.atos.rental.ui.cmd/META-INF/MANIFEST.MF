@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Cmd
+Bundle-SymbolicName: com.atos.rental.ui.cmd;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.atos.rental.ui.cmd.RentalUICmdActivator
+Bundle-Vendor: ATOS
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.atos.rental.ui;bundle-version="1.0.0",
+ org.eclipse.core.expressions
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
