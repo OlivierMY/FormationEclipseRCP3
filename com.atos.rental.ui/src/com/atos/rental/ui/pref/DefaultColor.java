@@ -7,9 +7,9 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 
 import com.atos.rental.ui.RentalUIActivator;
 
-public class Colors extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
+public class DefaultColor extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
-	public Colors() {
+	public DefaultColor() {
 		super(GRID);
 		setPreferenceStore(RentalUIActivator.getDefault().getPreferenceStore());
 		setDescription("Parametrages des couleurs de Rental...");

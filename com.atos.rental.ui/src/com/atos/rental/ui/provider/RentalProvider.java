@@ -3,9 +3,6 @@ package com.atos.rental.ui.provider;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 
-import org.eclipse.jface.resource.ColorRegistry;
-import org.eclipse.jface.resource.JFaceResources;
-import org.eclipse.jface.resource.StringConverter;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -187,21 +184,18 @@ public class RentalProvider extends LabelProvider implements
 
 	@Override
 	public Color getForeground(Object element) {
-		Color result = null;
-		if (element instanceof Customer) {
-			result = getAColor(RentalUIActivator.getDefault().getPreferenceStore().getString(PreferenceInitializer.PREF_CUSTOMER));
-		} else if (element instanceof RentalObject) {
-			result = getAColor(RentalUIActivator.getDefault().getPreferenceStore().getString(PreferenceInitializer.PREF_OBJECTS));
-		} else if (element instanceof Rental) {
-			result = getAColor(RentalUIActivator.getDefault().getPreferenceStore().getString(PreferenceInitializer.PREF_RENTAL));
-		}
-		return result;
+		String paletteName = RentalUIActivator.getDefault()
+				.getPreferenceStore()
+				.getString(PreferenceInitializer.PREF_PALETTE);
+		return RentalUIActivator.getDefault().getPaletteManager().get(paletteName).getCp().getForeground(element);
 	}
 
 	@Override
 	public Color getBackground(Object element) {
-		// TODO Auto-generated method stub
-		return null;
+		String paletteName = RentalUIActivator.getDefault()
+				.getPreferenceStore()
+				.getString(PreferenceInitializer.PREF_PALETTE);
+		return RentalUIActivator.getDefault().getPaletteManager().get(paletteName).getCp().getBackground(element);
 	}
 
 	@Override
@@ -225,16 +219,7 @@ public class RentalProvider extends LabelProvider implements
 		}
 		return result;
 	}
+
 	
-	private Color getAColor(String rgbKey) {
-		ColorRegistry colorRegistry = JFaceResources.getColorRegistry();
-		
-		Color col = colorRegistry.get(rgbKey);
-		if (col == null) {
-			colorRegistry.put(rgbKey, StringConverter.asRGB(rgbKey));
-			col = colorRegistry.get(rgbKey);
-		}
-		return col;
-	}
 
 }

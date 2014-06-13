@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="ColorPalette" name="ColorPalette" schema="schema/ColorPalette.exsd"/>
    <extension
          point="org.eclipse.ui.views">
       <view
@@ -37,9 +38,15 @@
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
-            class="com.atos.rental.ui.pref.Colors"
+            category="com.atos.rental.ui.pref.palette"
+            class="com.atos.rental.ui.pref.DefaultColor"
             id="com.atos.rental.ui.pref.colors"
             name="%page.name">
+      </page>
+      <page
+            class="com.atos.rental.ui.pref.PalettePref"
+            id="com.atos.rental.ui.pref.palette"
+            name="Palette">
       </page>
    </extension>
    <extension
@@ -107,6 +114,19 @@
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="F6">
       </key>
+   </extension>
+   <extension
+         point="com.atos.rental.ui.ColorPalette">
+      <palette
+            colorPaletteClass="com.atos.rental.ui.colorPalette.FixeNoir"
+            id="com.atos.rental.ui.colorPalette.FixeNoir"
+            name="FixeNoir">
+      </palette>
+      <palette
+            colorPaletteClass="com.atos.rental.ui.colorPalette.Default"
+            id="com.atos.rental.ui.colorPalette.Default"
+            name="Default">
+      </palette>
    </extension>
 
 </plugin>
