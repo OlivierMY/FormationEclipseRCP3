@@ -5,12 +5,13 @@ Bundle-SymbolicName: com.atos.rental.ui;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.atos.rental.ui.RentalUIActivator
 Bundle-Vendor: %Bundle-Vendor
-Require-Bundle: org.eclipse.ui,
+Require-Bundle: org.eclipse.ui;resolution:=optional,
  org.eclipse.core.runtime,
- org.eclipse.ui.views;bundle-version="3.6.100",
+ org.eclipse.ui.views;bundle-version="3.6.100";resolution:=optional,
  com.atos.rental.core;bundle-version="1.0.0";visibility:=reexport,
  org.eclipse.core.commands,
- org.eclipse.ui.workbench
+ org.eclipse.rap.ui;bundle-version="2.2.0";resolution:=optional,
+ org.eclipse.rap.ui.views;bundle-version="2.2.0";resolution:=optional
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: com.atos.rental.ui,
