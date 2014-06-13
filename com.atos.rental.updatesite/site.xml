@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/com.atos.rental.feature_1.0.0.201406131500.jar" id="com.atos.rental.feature" version="1.0.0.201406131500">
+   <feature url="features/com.atos.rental.feature_1.0.0.201406131509.jar" id="com.atos.rental.feature" version="1.0.0.201406131509">
       <category name="com.atos.rental"/>
    </feature>
    <category-def name="com.atos.rental" label="Rental"/>
