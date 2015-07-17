@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
+<?eclipse version="3.4"?> 
 <plugin>
    <extension-point id="ColorPalette" name="ColorPalette" schema="schema/ColorPalette.exsd"/>
    <extension
@@ -34,7 +34,7 @@
             id="com.atos.rental.ui.perspective.RentalPerspective"
             name="%perspective.name">
       </perspective>
-   </extension>
+   </extension> 
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
